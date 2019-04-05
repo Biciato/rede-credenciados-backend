@@ -16,7 +16,7 @@ class PropagandaPessoaJuridica extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'pessoa_juridica_id', 'estados_lateral', 'estados_topo', 'cidades_lateral', 'cidades_topo'
+        'user_id', 'estados_lateral', 'estados_topo', 'cidades_lateral', 'cidades_topo'
     ];
 
     /**
@@ -37,15 +37,8 @@ class PropagandaPessoaJuridica extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function pessoaJuridica()
+    public function user()
     {
-        return $this->belongsTo('App\PessoaJuridica');
+        return $this->belongsTo('App\User');
     }
-
-    protected $casts = [
-            'estados_lateral' => 'array',
-            'estados_topo' => 'array',
-            'cidades_lateral' => 'array',
-            'cidades_topo' => 'array',
-        ];
 }

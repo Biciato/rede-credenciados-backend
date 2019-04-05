@@ -13,10 +13,10 @@ class CreatePropagandaPessoaJuridicaTable extends Migration
      */
     public function up()
     {
-        Schema::create('propaganda_pessoa_juridica', function (Blueprint $table) {
+        Schema::create('propaganda_pessoa_juridicas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('pessoa_juridica_id');
-            $table->foreign('pessoa_juridica_id')->references('id')->on('pessoa_juridicas');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('estados_lateral')->nullable();
             $table->string('estados_topo')->nullable();
             $table->string('cidades_lateral')->nullable();
@@ -32,6 +32,6 @@ class CreatePropagandaPessoaJuridicaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('propaganda_pessoa_juridica');
+        Schema::dropIfExists('propaganda_pessoa_juridicas');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Mailgun\Mailgun;
 
 class VerificationController extends Controller
 {
@@ -31,5 +32,19 @@ class VerificationController extends Controller
         $user = User::find($id)->update(['email_verified_at' => $request->get('date')]);
 
         return response()->json($user, 201);
+    }
+
+    public function emailValidation(Request $request)
+    {
+        # Instantiate the client.
+        $mgClient = new Mailgun('pubkey-34423f14fc159d2e4352dc1ad1365289');
+        $validateAddress = $request->get('email');
+
+        # Issue the call to the client.
+        $result = $mgClient->get("address/validate", array('address' => $validateAddress));
+        # is_valid is 0 or 1
+        $isValid = $result->http_response_body->is_valid;
+
+        return response()->json($isValid, 201);
     }
 }

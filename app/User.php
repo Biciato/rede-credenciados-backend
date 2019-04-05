@@ -6,6 +6,7 @@
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Foundation\Auth\User as Authenticatable;
     use Tymon\JWTAuth\Contracts\JWTSubject;
+    use Illuminate\Support\Facades\Hash;
 
     class User extends Authenticatable implements JWTSubject
     {
@@ -48,8 +49,18 @@
             return $this->hasOne('App\PessoaJuridica');
         }
 
-        public function cotacaoLida() 
+        public function cotacaoLida()
         {
             return $this->hasMany('App\CotacaoLida');
+        }
+
+        public function setPasswordAttribute($value)
+        {
+            $this->attributes['password'] = Hash::make($value);
+        }
+
+        public function propaganda()
+        {
+            return $this->hasOne('App\PropagandaPessoaJuridica');
         }
     }

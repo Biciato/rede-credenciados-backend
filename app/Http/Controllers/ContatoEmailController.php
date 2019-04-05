@@ -25,7 +25,7 @@ class ContatoEmailController extends Controller
         $cel = $request->get('cel');
         $mensagem = $request->get('mensagem');
 
-        Mail::to('leandrobiciato58@gmail.com')->send(new ContatoEmail(
+        Mail::to($email_to)->send(new ContatoEmail(
             $nome,
             $email,
             $tel,

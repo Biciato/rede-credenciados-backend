@@ -46,7 +46,7 @@ class UserController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'tipo_pessoa' => $request->get('tipo_pessoa'),
-            'password' => Hash::make($request->get('password')),
+            'password' => $request->get('password'),
         ]);
 
         $token = JWTAuth::fromUser($user);
@@ -68,7 +68,7 @@ HDC;
                 'destinatario_id' => $user->id,
                 'remetente_id' => 54,
                 'titulo' => 'Bem Vindo',
-                'mensagem' => $mensagem, 
+                'mensagem' => $mensagem,
                 'mensagem_lida' => 0
             ]);
         }
@@ -104,18 +104,9 @@ HDC;
     public function updatePassword(Request $request, $id)
     {
         $user = User::find($id);
+        $user->update(['password'=>$request->get('newPassword')]);
 
-        if ($user->email == $request->get('email')) {
-            if ($request->get('newPassword') == $request->get('newPasswordConfirmation')) {
-                $user->update(['password'=> Hash::make($request->get('newPassword'))]);
-
-                return response()->json($user, 201);
-            } else {
-                return response()->json('Senha não confere', 404);
-            }
-        } else {
-            return response()->json('E-mail não confere', 201);
-        }
+        return response()->json($user, 201);
     }
 
     public function delete($id)
@@ -142,7 +133,7 @@ HDC;
                 $unidade->apresentacao()->delete();
                 $unidade->unidadeImg()->delete();
                 $unidade->delete();
-            }            
+            }
             $pessoa_juridica->endereco()->delete();
             $pessoa_juridica->atividade()->delete();
             $pessoa_juridica->apresentacao()->delete();

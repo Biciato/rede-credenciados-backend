@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('verify-email', 'VerificationController@verify');
+Route::post('email-validation', 'VerificationController@emailValidation');
 Route::post('confirm-email/{id}', 'VerificationController@confirm');
 Route::post('forget-password-email', 'ForgetPasswordController@email');
 Route::post('reset-password/{id}', 'ForgetPasswordController@updatePassword');
@@ -86,6 +87,8 @@ Route::post('curriculo', 'CurriculoController@create');
 
 Route::post('check-cnpj-unidade', 'UnidadeController@checkCnpj');
 
+Route::get('propagandas/{cidade}/{estado}', 'PropagandaPessoaJuridicaController@index');
+
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::delete('user/{id}', 'UserController@delete');
@@ -102,7 +105,7 @@ Route::middleware(['jwt.verify', 'cors'])->group(function() {
 
     Route::get('pessoa-fisica/{id}', 'PessoaFisicaController@show');
     Route::put('pessoa-fisica/{id}', 'PessoaFisicaController@update');
-    Route::get('endereco-pf/{id}', 'EnderecoPessoaFisicaController@show'); 
+    Route::get('endereco-pf/{id}', 'EnderecoPessoaFisicaController@show');
     Route::put('endereco-pf/{id}', 'EnderecoPessoaFisicaController@update');
     Route::get('apresentacao-pf/{id}', 'ApresentacaoPessoaFisicaController@show');
     Route::put('apresentacao-pf/{id}', 'ApresentacaoPessoaFisicaController@update');
@@ -145,7 +148,7 @@ Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::delete('slide-imagem/{filename}', 'ArquivosController@deleteSlideImg');
 
     Route::get('newsletters', 'NewsletterController@index');
-    Route::delete('newsletter/{id}', 'NewsletterController@delete'); 
+    Route::delete('newsletter/{id}', 'NewsletterController@delete');
 
     Route::post('banner/{id}/{local}/{filename}', 'ArquivosController@storeBanner');
 
