@@ -59,6 +59,28 @@ class ArquivosController extends Controller
         return response()->json($path, 201);
     }
 
+    public function storeBannerSimpleUser(Request $request, $id, $local, $filename) 
+    {
+        if ($local === 'topo') {
+            $files = Storage::disk('public')->files('banners-simple-users/' . $id . '/topo');
+            if ($files) {
+        
+                Storage::disk('public')->delete($files[0]);
+            }
+        } else {
+            $files = Storage::disk('public')->files('banners-simple-users/' . $id . '/lateral');
+            if ($files) {
+        
+                Storage::disk('public')->delete($files[0]);
+            }
+        }
+        
+        
+        $path = $request->file('banner')->storeAs('banners-simple-users/' . $id . '/' . $local,  $filename, 'public');
+
+        return response()->json($path, 201);
+    }
+
     public function index($id)
     {
         $files = Storage::disk('public')->files('arquivos/'.$id.'/pdf');
