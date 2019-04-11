@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0",
         "mailgun/mailgun-php": "^2.8",
         "nyholm/psr7": "^1.1",
+        "pagseguro/pagseguro-php-sdk": "^6.0",
         "spatie/laravel-cors": "^1.4",
         "tymon/jwt-auth": "1.0.0-rc.3"
     },

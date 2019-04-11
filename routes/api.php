@@ -89,6 +89,10 @@ Route::post('check-cnpj-unidade', 'UnidadeController@checkCnpj');
 
 Route::get('propagandas/{cidade}/{estado}', 'PropagandaPessoaJuridicaController@index');
 
+Route::post('user-propaganda-register', 'UserPropagandaController@register');
+Route::post('propaganda-user', 'PropagandaUserController@create');
+Route::get('propaganda-user', 'PropagandaUserController@index');
+
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
     Route::delete('user/{id}', 'UserController@delete');
