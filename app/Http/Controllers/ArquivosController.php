@@ -30,6 +30,15 @@ class ArquivosController extends Controller
         return response()->json($path, 201);
     }
 
+    public function storeUnidadeImg(Request $request, $id, $filename) 
+    {
+        
+        $path = $request->file('arquivo')->storeAs('arquivos-unidade/' . $id . '/imagens\/', $filename, 'public');
+        
+
+        return response()->json($path, 201);
+    }
+
     public function storeSlideImg(Request $request, $filename, $ordem) 
     {
         $path = $request->file('slide-imagem')->storeAs('slide-imagens', $ordem . $filename, 'public');
@@ -95,6 +104,13 @@ class ArquivosController extends Controller
     public function imagensIdx($id)
     {
         $files = Storage::disk('public')->files('arquivos/'.$id.'/imagens');
+
+        return response()->json($files, 201);
+    } 
+
+    public function imagensUnidadeIdx($id)
+    {
+        $files = Storage::disk('public')->files('arquivos-unidade/'.$id.'/imagens');
 
         return response()->json($files, 201);
     } 

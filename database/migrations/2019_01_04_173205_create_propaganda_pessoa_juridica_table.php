@@ -17,10 +17,10 @@ class CreatePropagandaPessoaJuridicaTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('estados_lateral')->nullable();
-            $table->string('estados_topo')->nullable();
-            $table->string('cidades_lateral')->nullable();
-            $table->string('cidades_topo')->nullable();
+            $table->text('estados_lateral')->nullable();
+            $table->text('estados_topo')->nullable();
+            $table->text('cidades_lateral')->nullable();
+            $table->text('cidades_topo')->nullable();
             $table->timestamps();
         });
     }

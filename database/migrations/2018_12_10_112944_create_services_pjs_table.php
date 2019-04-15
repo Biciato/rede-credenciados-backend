@@ -17,7 +17,7 @@ class CreateServicesPjsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('pessoa_juridica_id');
             $table->foreign('pessoa_juridica_id')->references('id')->on('pessoa_juridicas');
-            $table->string('atividades');
+            $table->text('atividades');
             $table->timestamps();
         });
     }

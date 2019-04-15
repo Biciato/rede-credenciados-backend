@@ -18,7 +18,7 @@ class CreateMessageTable extends Migration
             $table->unsignedInteger('destinatario_id');
             $table->unsignedBigInteger('remetente_id');
             $table->string('titulo');
-            $table->longText('mensagem');
+            $table->text('mensagem');
             $table->boolean('mensagem_lida');
             $table->timestamps();
         });

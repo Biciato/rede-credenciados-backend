@@ -59,6 +59,7 @@ Route::delete('avatar-unidade/{id}/{unidadeId}', 'AvatarController@deleteUnidade
 
 Route::get('banner/{id}/top', 'ArquivosController@showTop');
 Route::get('banner/{id}/side', 'ArquivosController@showSide');
+Route::post('banner-simple-user/{id}/{local}/{filename}', 'ArquivosController@storeBannerSimpleUser');
 
 Route::post('friend-indication', 'FriendIndicationController@email');
 Route::post('friend-indication-sms', 'FriendIndicationController@sms');
@@ -75,7 +76,9 @@ Route::get('pessoa-juridica-resumo/{id}', 'ApresentacaoPessoaJuridicaController@
 
 Route::get('arquivos/{id}', 'ArquivosController@index');
 Route::post('arquivos/{id}/{filename}', 'ArquivosController@store');
+Route::post('arquivos-unidade/{id}/{filename}', 'ArquivosController@storeUnidadeImg');
 Route::get('arquivos-imagens-index/{id}', 'ArquivosController@imagensIdx');
+Route::get('imagens-unidade-index/{id}', 'ArquivosController@imagensUnidadeIdx');
 Route::get('slide-imagens', 'ArquivosController@slideImgIdx');
 
 Route::get('credenciados', 'CredenciadoController@index');
@@ -89,9 +92,10 @@ Route::post('check-cnpj-unidade', 'UnidadeController@checkCnpj');
 
 Route::get('propagandas/{cidade}/{estado}', 'PropagandaPessoaJuridicaController@index');
 
-Route::post('user-propaganda-register', 'UserPropagandaController@register');
+Route::post('user-propaganda-register', 'UsersPropagandaController@register');
 Route::post('propaganda-user', 'PropagandaUserController@create');
 Route::get('propaganda-user', 'PropagandaUserController@index');
+Route::post('pagseguro-checkout', 'PagseguroController@checkout');
 
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::get('user', 'UserController@getAuthenticatedUser');

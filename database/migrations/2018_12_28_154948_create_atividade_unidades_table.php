@@ -17,7 +17,7 @@ class CreateAtividadeUnidadesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('unidade_id');
             $table->foreign('unidade_id')->references('id')->on('unidades');
-            $table->string('atividades');
+            $table->text('atividades');
             $table->timestamps();
         });
     }

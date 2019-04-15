@@ -17,7 +17,7 @@ class CreateServicesPfsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('pessoa_fisica_id');
             $table->foreign('pessoa_fisica_id')->references('id')->on('pessoa_fisicas');
-            $table->string('atividades');
+            $table->text('atividades');
             $table->timestamps();
         });
     }

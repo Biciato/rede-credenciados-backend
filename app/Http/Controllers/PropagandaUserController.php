@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\UserPropaganda;
+use App\UsersPropaganda;
 use App\PropagandaUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +13,7 @@ class PropagandaUserController extends Controller
 
     public function create(Request $request)
     {
-        $userPropaganda = UserPropaganda::find($request->get('id'));
+        $userPropaganda = UsersPropaganda::find($request->get('id'));
 
         $propagandaUser = $userPropaganda->propaganda()->create([
             'estados_lateral' => ($request->get('estados_lateral')),
@@ -27,7 +27,7 @@ class PropagandaUserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $userPropaganda = UserPropaganda::find($id);
+        $userPropaganda = UsersPropaganda::find($id);
         $propagandaUser = $userPropaganda->propaganda()->update($request->all());
 
         return response()->json($propagandaUser, 201);
@@ -35,7 +35,7 @@ class PropagandaUserController extends Controller
 
     public function show($id)
     {
-        $propaganda = UserPropaganda::find($id)->propaganda;
+        $propaganda = UsersPropaganda::find($id)->propaganda;
 
         return response()->json($propaganda, 201);
     }
