@@ -1,6 +1,6 @@
 @component('mail::message')
 <div style="border-left: 7px solid orange">   
-    <p style="margin: 0.5rem">
+    <p style="margin: 0.5rem ">
         Mensagem do Indicador(a):<br>
         {{ $mensagem }}
     </p>

@@ -129,6 +129,13 @@ class ArquivosController extends Controller
         return response()->json($delete, 201);
     }
 
+    public function deleteUnidadeImg($id, $filename)
+    {
+        $delete = Storage::disk('public')->delete('arquivos-unidade/' . $id . '/imagens\/' . $filename);
+
+        return response()->json($delete, 201);
+    }
+
     public function deleteSlideImg($filename)
     {
         $delete = Storage::disk('public')->delete('slide-imagens/' . $filename);
