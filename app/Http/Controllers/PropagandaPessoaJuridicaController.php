@@ -59,11 +59,11 @@ class PropagandaPessoaJuridicaController extends Controller
         $propagandas_topo = PropagandaPessoaJuridica::where([
             ['cidades_topo', 'like', '%'.$cidadeDecoded.'%'],
             ['estados_topo', 'like', '%'.$estadoDecoded.'%']
-        ])->get();
+        ])->orWhere('cidades_topo', 'todos')->get();
         $propagandas_lateral = PropagandaPessoaJuridica::where([
             ['cidades_lateral' , 'like', '%'.$cidadeDecoded.'%'],
             ['estados_lateral' , 'like', '%'.$estadoDecoded.'%']
-        ])->get();
+        ])->orWhere('cidades_lateral', 'todos')->get();
 
         return response()->json(array(
             $propagandas_topo, $propagandas_lateral

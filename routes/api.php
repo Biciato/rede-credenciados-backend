@@ -59,6 +59,8 @@ Route::delete('avatar-unidade/{id}/{unidadeId}', 'AvatarController@deleteUnidade
 
 Route::get('banner/{id}/top', 'ArquivosController@showTop');
 Route::get('banner/{id}/side', 'ArquivosController@showSide');
+Route::get('banner-simple-user/{id}/top', 'ArquivosController@showTopSimpleUser');
+Route::get('banner-simple-user/{id}/side', 'ArquivosController@showSideSimpleUser');
 Route::post('banner-simple-user/{id}/{local}/{filename}', 'ArquivosController@storeBannerSimpleUser');
 
 Route::post('friend-indication', 'FriendIndicationController@email');

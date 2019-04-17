@@ -25,6 +25,7 @@ class CreateUsersPropagandasTable extends Migration
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');
+            $table->string('pagamento_status')->default('pendente');
             $table->timestamps();
         });
     }

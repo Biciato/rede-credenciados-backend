@@ -14,12 +14,12 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class ArquivosController extends Controller
 {
-    public function store(Request $request, $id, $filename) 
+    public function store(Request $request, $id, $filename)
     {
         if (substr($filename, -4) == '.pdf') {
             $files = Storage::disk('public')->files('arquivos/'.$id.'/pdf');
             if ($files) {
-        
+
                 Storage::disk('public')->delete($files[0]);
             }
             $path = $request->file('arquivo')->storeAs('arquivos/' . $id . '/pdf\/', $filename, 'public');
@@ -30,61 +30,61 @@ class ArquivosController extends Controller
         return response()->json($path, 201);
     }
 
-    public function storeUnidadeImg(Request $request, $id, $filename) 
+    public function storeUnidadeImg(Request $request, $id, $filename)
     {
-        
+
         $path = $request->file('arquivo')->storeAs('arquivos-unidade/' . $id . '/imagens\/', $filename, 'public');
-        
+
 
         return response()->json($path, 201);
     }
 
-    public function storeSlideImg(Request $request, $filename, $ordem) 
+    public function storeSlideImg(Request $request, $filename, $ordem)
     {
         $path = $request->file('slide-imagem')->storeAs('slide-imagens', $ordem . $filename, 'public');
 
         return response()->json($path, 201);
     }
 
-    public function storeBanner(Request $request, $id, $local, $filename) 
+    public function storeBanner(Request $request, $id, $local, $filename)
     {
         if ($local === 'topo') {
             $files = Storage::disk('public')->files('banners/' . $id . '/topo');
             if ($files) {
-        
+
                 Storage::disk('public')->delete($files[0]);
             }
         } else {
             $files = Storage::disk('public')->files('banners/' . $id . '/lateral');
             if ($files) {
-        
+
                 Storage::disk('public')->delete($files[0]);
             }
         }
-        
-        
+
+
         $path = $request->file('banner')->storeAs('banners/' . $id . '/' . $local,  $filename, 'public');
 
         return response()->json($path, 201);
     }
 
-    public function storeBannerSimpleUser(Request $request, $id, $local, $filename) 
+    public function storeBannerSimpleUser(Request $request, $id, $local, $filename)
     {
         if ($local === 'topo') {
             $files = Storage::disk('public')->files('banners-simple-users/' . $id . '/topo');
             if ($files) {
-        
+
                 Storage::disk('public')->delete($files[0]);
             }
         } else {
             $files = Storage::disk('public')->files('banners-simple-users/' . $id . '/lateral');
             if ($files) {
-        
+
                 Storage::disk('public')->delete($files[0]);
             }
         }
-        
-        
+
+
         $path = $request->file('banner')->storeAs('banners-simple-users/' . $id . '/' . $local,  $filename, 'public');
 
         return response()->json($path, 201);
@@ -99,23 +99,23 @@ class ArquivosController extends Controller
         }
 
         return response()->json($files, 201);
-    } 
+    }
 
     public function imagensIdx($id)
     {
         $files = Storage::disk('public')->files('arquivos/'.$id.'/imagens');
 
         return response()->json($files, 201);
-    } 
+    }
 
     public function imagensUnidadeIdx($id)
     {
         $files = Storage::disk('public')->files('arquivos-unidade/'.$id.'/imagens');
 
         return response()->json($files, 201);
-    } 
+    }
 
-    public function slideImgIdx() 
+    public function slideImgIdx()
     {
         $imagens = Storage::disk('public')->files('slide-imagens');
 
@@ -146,16 +146,16 @@ class ArquivosController extends Controller
     public function showTop($id)
     {
         $banner = Storage::disk('public')->files('banners/' . $id . '/topo');
-        
+
         return response()->json($banner, 201);
-       
+
     }
 
     public function showSide($id)
     {
         $banner = Storage::disk('public')->files('banners/' . $id . '/lateral');
-        
+
         return response()->json($banner, 201);
-       
+
     }
 }
