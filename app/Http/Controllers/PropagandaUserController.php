@@ -46,14 +46,12 @@ class PropagandaUserController extends Controller
         $estadoDecoded = urldecode($estado);
         $propagandas_topo = PropagandaUser::where([
             ['cidades_topo', 'like', '%'.$cidadeDecoded.'%'],
-            ['estados_topo', 'like', '%'.$estadoDecoded.'%'],
-            ['cidades_topo', 'like', '%'.'todas'.'%']
-        ])->get();
+            ['estados_topo', 'like', '%'.$estadoDecoded.'%']
+        ])->orWhere('cidades_topo', 'todos')->get();
         $propagandas_lateral = PropagandaUser::where([
             ['cidades_lateral' , 'like', '%'.$cidadeDecoded.'%'],
-            ['estados_lateral' , 'like', '%'.$estadoDecoded.'%'],
-            ['cidades_lateral' , 'like', '%'.'todas'.'%']
-        ])->get();
+            ['estados_lateral' , 'like', '%'.$estadoDecoded.'%']
+        ])->orWhere('cidades_lateral', 'todos')->get();
 
         return response()->json(array(
             $propagandas_topo, $propagandas_lateral

@@ -158,4 +158,20 @@ class ArquivosController extends Controller
         return response()->json($banner, 201);
 
     }
+
+    public function showTopSimpleUser($id)
+    {
+        $banner = Storage::disk('public')->files('banners-simple-users/' . $id . '/topo');
+
+        return response()->json($banner, 201);
+
+    }
+
+    public function showSideSimpleUser($id)
+    {
+        $banner = Storage::disk('public')->files('banners-simple-users/' . $id . '/lateral');
+
+        return response()->json($banner, 201);
+
+    }
 }

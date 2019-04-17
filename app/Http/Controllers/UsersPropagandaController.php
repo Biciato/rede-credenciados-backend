@@ -31,6 +31,13 @@ class UsersPropagandaController extends Controller
         return response()->json($userPropaganda, 201);
     }
 
+    public function show($id)
+    {
+        $userPropaganda = UsersPropaganda::find($id);
+
+        return response()->json($userPropaganda, 201);
+    }
+
     public function checkUserEmail($email) {
         $user = User::where('email', $email)->first();
 

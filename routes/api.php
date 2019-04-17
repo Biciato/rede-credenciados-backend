@@ -95,8 +95,10 @@ Route::post('check-cnpj-unidade', 'UnidadeController@checkCnpj');
 Route::get('propagandas/{cidade}/{estado}', 'PropagandaPessoaJuridicaController@index');
 
 Route::post('user-propaganda-register', 'UsersPropagandaController@register');
+Route::get('user-propaganda/{id}', 'UsersPropagandaController@show');
 Route::post('propaganda-user', 'PropagandaUserController@create');
-Route::get('propaganda-user', 'PropagandaUserController@index');
+Route::get('propagandas-simple-user/{cidade}/{estado}', 'PropagandaUserController@index');
+
 Route::post('pagseguro-checkout', 'PagseguroController@checkout');
 
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
