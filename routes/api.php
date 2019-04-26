@@ -63,7 +63,7 @@ Route::get('banner-simple-user/{id}/top', 'ArquivosController@showTopSimpleUser'
 Route::get('banner-simple-user/{id}/side', 'ArquivosController@showSideSimpleUser');
 Route::post('banner-simple-user/{id}/{local}/{filename}', 'ArquivosController@storeBannerSimpleUser');
 
-Route::post('friend-indication', 'FriendIndicationController@email');
+Route::post('friend-indication-email', 'FriendIndicationController@email');
 Route::post('friend-indication-sms', 'FriendIndicationController@sms');
 
 Route::post('contato-email', 'ContatoEmailController@email');
@@ -95,15 +95,21 @@ Route::post('check-cnpj-unidade', 'UnidadeController@checkCnpj');
 Route::get('propagandas/{cidade}/{estado}', 'PropagandaPessoaJuridicaController@index');
 
 Route::post('user-propaganda-register', 'UsersPropagandaController@register');
+Route::get('user-propagandas', 'UsersPropagandaController@index');
 Route::get('user-propaganda/{id}', 'UsersPropagandaController@show');
 Route::post('propaganda-user', 'PropagandaUserController@create');
 Route::get('propagandas-simple-user/{cidade}/{estado}', 'PropagandaUserController@index');
 
 Route::post('pagseguro-checkout', 'PagseguroController@checkout');
 
+Route::get('friend-indications', 'FriendIndicationController@index');
+Route::post('friend-indication', 'FriendIndicationController@create');
+
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
+    Route::get('user/{id}', 'UserController@user');
     Route::delete('user/{id}', 'UserController@delete');
+    Route::put('user/{id}', 'UserController@update');
     Route::put('user-reset-password/{id}', 'UserController@updatePassword');
 
     Route::get('pessoa-juridica/{id}', 'PessoaJuridicaController@show');

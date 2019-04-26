@@ -151,4 +151,19 @@ HDC;
 
         return response()->json($user, 201);
     }
+
+    public function user($id)
+    {
+        $user = User::find($id);
+
+        return response()->json($user, 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->update($request->all());
+
+        return response()->json($user, 201);
+    }
 }

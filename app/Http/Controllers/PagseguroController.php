@@ -53,7 +53,6 @@ try {
 }
 
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
 class PagseguroController extends Controller
 {

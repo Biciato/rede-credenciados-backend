@@ -38,6 +38,13 @@ class UsersPropagandaController extends Controller
         return response()->json($userPropaganda, 201);
     }
 
+    public function index()
+    {
+        $usersPropagandas = UsersPropaganda::all();
+
+        return response()->json($usersPropagandas, 201);
+    }
+
     public function checkUserEmail($email) {
         $user = User::where('email', $email)->first();
 

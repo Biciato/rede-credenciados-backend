@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class FriendIndication extends Mailable
+class FriendIndicationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
