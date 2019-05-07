@@ -15,10 +15,11 @@ class CreateMessageTable extends Migration
     {
         Schema::create('mensagens', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('destinatario_id');
-            $table->unsignedBigInteger('remetente_id');
             $table->string('titulo');
             $table->text('mensagem');
+            $table->text('especialidades');
+            $table->text('cidades');
+            $table->text('estados');
             $table->boolean('mensagem_lida');
             $table->timestamps();
         });

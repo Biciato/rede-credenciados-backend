@@ -47,4 +47,18 @@ class MensagemController extends Controller
 
         return response()->json($mensagem_ids, 201);
     }
+
+    public function create(Request $request)
+    {
+        $mensagem = Mensagem::create([
+            'titulo' => $request->get('title'),
+            'mensagem' => $request->get('message'),
+            'mensagem_lida' => false,
+            'especialidades' => $request->get('activities'),
+            'cidades' => $request->get('cities'),
+            'estados' => $request->get('states')
+        ]);
+
+        return response()->json($mensagem, 201);
+    }
 }

@@ -65,8 +65,7 @@ class UserController extends Controller
 HDC;
 
             Mensagem::create([
-                'destinatario_id' => $user->id,
-                'remetente_id' => 54,
+                'especialidades' => 'todas',
                 'titulo' => 'Bem Vindo',
                 'mensagem' => $mensagem,
                 'mensagem_lida' => 0
@@ -118,7 +117,6 @@ HDC;
             $pessoa_fisica->endereco()->delete();
             $pessoa_fisica->atividade()->delete();
             $pessoa_fisica->apresentacao()->delete();
-            $pessoa_fisica->pessoaFisicaImg()->delete();
             $pessoa_fisica->delete();
 
             $user->delete();
@@ -131,13 +129,11 @@ HDC;
                 $unidade->endereco()->delete();
                 $unidade->atividade()->delete();
                 $unidade->apresentacao()->delete();
-                $unidade->unidadeImg()->delete();
                 $unidade->delete();
             }
             $pessoa_juridica->endereco()->delete();
             $pessoa_juridica->atividade()->delete();
             $pessoa_juridica->apresentacao()->delete();
-            $pessoa_juridica->pessoaJuridicaImg()->delete();
             $pessoa_juridica->delete();
 
             $user->delete();

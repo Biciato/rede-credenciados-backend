@@ -16,6 +16,6 @@ class FriendIndication extends Model
      */
     protected $fillable = [
         'quem_indicou', 'indicado', 'forma_indicacao', 'bairro',
-        'cidade', 'estado'
+        'cidade', 'estado', 'mensagem'
     ];
 }

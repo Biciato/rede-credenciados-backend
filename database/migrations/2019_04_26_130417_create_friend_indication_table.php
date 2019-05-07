@@ -18,9 +18,9 @@ class CreateFriendIndicationTable extends Migration
             $table->string('quem_indicou');
             $table->string('indicado');
             $table->string('forma_indicacao');
-            $table->string('bairro');
-            $table->string('cidade');
-            $table->string('estado');
+            $table->string('bairro')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('estado')->nullable();
             $table->timestamps();
         });
     }

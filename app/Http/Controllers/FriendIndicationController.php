@@ -17,6 +17,12 @@ class FriendIndicationController extends Controller
         return response()->json($friendIndication, 201);
     }
 
+    public function update($id)
+    {
+        $friendIndication = FriendIndication::find($id)->touch();
+
+        return response()->json($friendIndication, 201);
+    }
     public function index()
     {
         $friendIndications = FriendIndication::all();

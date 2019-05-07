@@ -16,7 +16,7 @@ class Mensagem extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'destinatario_id', 'remetente_id', 'titulo', 'mensagem', 'mensagem_lida'
+        'especialidades', 'cidades', 'estados', 'titulo', 'mensagem', 'mensagem_lida'
     ];
 
     /**

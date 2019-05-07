@@ -104,6 +104,7 @@ Route::post('pagseguro-checkout', 'PagseguroController@checkout');
 
 Route::get('friend-indications', 'FriendIndicationController@index');
 Route::post('friend-indication', 'FriendIndicationController@create');
+Route::put('friend-indication/{id}', 'FriendIndicationController@update');
 
 Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::get('user', 'UserController@getAuthenticatedUser');
@@ -146,6 +147,7 @@ Route::middleware(['jwt.verify', 'cors'])->group(function() {
     Route::put('propaganda-pj/{id}', 'PropagandaPessoaJuridicaController@update');
     Route::put('propaganda-unidade/{id}', 'PropagandaUnidadeController@update');
 
+    Route::post('mensagem', 'MensagemController@create');
     Route::get('mensagens/{id}', 'MensagemController@mensagensUser');
     Route::put('mensagens/{id}', 'MensagemController@update');
     Route::put('mensagens', 'MensagemController@updateCol');
