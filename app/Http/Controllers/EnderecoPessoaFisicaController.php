@@ -40,7 +40,7 @@ class EnderecoPessoaFisicaController extends Controller
         return response()->json($pessoa_fisica_endereco, 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $endereco = PessoaFisica::find($id)->endereco;
 
@@ -70,5 +70,12 @@ class EnderecoPessoaFisicaController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+
+    public function index()
+    {
+        $enderecos = EnderecoPessoaFisica::all();
+
+        return response()->json($enderecos, 201);
     }
 }

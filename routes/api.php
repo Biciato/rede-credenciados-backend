@@ -74,7 +74,11 @@ Route::post('pesquisa-clientes', 'PesquisaClientesController@pesquisa');
 
 Route::get('pessoa-fisica-resumo/{id}', 'ApresentacaoPessoaFisicaController@showResumo');
 
+Route::get('endereco-pfs', 'EnderecoPessoaFisicaController@index');
+
 Route::get('pessoa-juridica-resumo/{id}', 'ApresentacaoPessoaJuridicaController@showResumo');
+
+Route::get('endereco-pjs', 'EnderecoPessoaJuridicaController@index');
 
 Route::get('arquivos/{id}', 'ArquivosController@index');
 Route::post('arquivos/{id}/{filename}', 'ArquivosController@store');

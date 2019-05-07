@@ -18,7 +18,7 @@ class EnderecoPessoaJuridicaController extends Controller
     {
         /*
         $validator = Validator::make($request->all(), [
-            'cep' => 'required|string|max:255', 
+            'cep' => 'required|string|max:255',
         ]);
 
         if($validator->fails()){
@@ -42,7 +42,7 @@ class EnderecoPessoaJuridicaController extends Controller
     }
 
     public function update(Request $request, $id)
-    { 
+    {
         $pessoa_juridica = PessoaJuridica::find($id);
 
         $pessoa_juridica_endereco = $pessoa_juridica->endereco()->update($request->all());
@@ -50,7 +50,7 @@ class EnderecoPessoaJuridicaController extends Controller
         return response()->json($pessoa_juridica_endereco, 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $endereco = PessoaJuridica::find($id)->endereco;
 
@@ -80,5 +80,12 @@ class EnderecoPessoaJuridicaController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+
+    public function index()
+    {
+        $enderecos = EnderecoPessoaJuridica::all();
+
+        return response()->json($enderecos, 201);
     }
 }
