@@ -49,6 +49,10 @@ Route::post('registro-inicial-unidade', 'RegistroInicialUnidadeController@regist
 
 Route::get('atividades', 'AtividadeController@index');
 Route::get('atividades/{id}', 'AtividadeController@show');
+Route::get('activities-pf-count', 'AtividadePessoaFisicaController@activitiesCount');
+Route::get('activities-pj-count', 'AtividadePessoaJuridicaController@activitiesCount');
+
+Route::get('atividades-relatorio', 'AtividadesRelatorioController@relatorio');
 
 Route::post('avatar/{id}/{filename}', 'AvatarController@update');
 Route::get('avatar/{id}', 'AvatarController@show');

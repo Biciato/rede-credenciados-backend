@@ -33,7 +33,7 @@ class AtividadePessoaFisicaController extends Controller
     }
 
     public function update(Request $request, $id)
-    { 
+    {
         $pessoa_fisica = PessoaFisica::find($id);
 
         $pessoa_fisica_atividade = $pessoa_fisica->atividade()->update(['atividades' => $request->get('atividades')]);
@@ -41,7 +41,7 @@ class AtividadePessoaFisicaController extends Controller
         return response()->json($pessoa_fisica_atividade, 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $pessoa_fisica_atividade = PessoaFisica::find($id)->atividade;
 

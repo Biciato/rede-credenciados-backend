@@ -16,7 +16,7 @@ class AtividadePessoaJuridicaController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'atividades' => 'required|json|max:255', 
+            'atividades' => 'required|json|max:255',
         ]);
 
         if($validator->fails()){
@@ -33,7 +33,7 @@ class AtividadePessoaJuridicaController extends Controller
     }
 
     public function update(Request $request, $id)
-    { 
+    {
         $pessoa_juridica = PessoaJuridica::find($id);
 
         $pessoa_juridica_atividade = $pessoa_juridica->atividade()->update(['atividades' => $request->get('atividades')]);
@@ -41,7 +41,7 @@ class AtividadePessoaJuridicaController extends Controller
         return response()->json($pessoa_juridica_atividade, 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $pessoa_juridica_atividade = PessoaJuridica::find($id)->atividade;
 
