@@ -22,15 +22,6 @@
             'bairro', 'cidade', 'estado'
         ];
 
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            'password', 'remember_token',
-        ];
-
         public function getJWTIdentifier()
         {
             return $this->getKey();
@@ -40,6 +31,7 @@
             return [];
         }
 
+        // relationships
         public function propaganda()
         {
             return $this->hasOne('App\PropagandaUser');

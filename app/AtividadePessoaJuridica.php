@@ -16,7 +16,7 @@
          * @var array
          */
         protected $fillable = [
-            'pj_id', 'atividades'
+            'pessoa_juridica_id', 'atividades'
         ];
 
         /**

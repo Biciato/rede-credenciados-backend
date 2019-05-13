@@ -16,7 +16,7 @@
          * @var array
          */
         protected $fillable = [
-            'pf_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado'
+            'pessoa_fisica_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado'
         ];
 
         /**
@@ -37,6 +37,7 @@
             return [];
         }
 
+        // relationships
         public function pessoaFisica()
         {
             return $this->belongsTo('App\PessoaFisica');

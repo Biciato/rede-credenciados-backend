@@ -14,7 +14,7 @@ class ApresentacaoUnidadeController extends Controller
 {
 
     public function update(Request $request, $id)
-    { 
+    {
         $unidade = Unidade::find($id);
 
         $unidade_apresentacao = $unidade->apresentacao()->update($request->all());
@@ -22,7 +22,7 @@ class ApresentacaoUnidadeController extends Controller
         return response()->json($unidade_apresentacao, 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         $apresentacao = Unidade::find($id)->apresentacao;
 

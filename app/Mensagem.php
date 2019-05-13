@@ -19,19 +19,6 @@ class Mensagem extends Authenticatable implements JWTSubject
         'especialidades', 'cidades', 'estados', 'titulo', 'mensagem', 'mensagem_lida'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        //
-    ];
-
-    protected $table = 'mensagens';
-
-    protected $casts = ['destinatario_id' => 'array'];
-
     public function getJWTIdentifier()
     {
         return $this->getKey();

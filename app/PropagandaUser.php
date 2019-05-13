@@ -19,15 +19,6 @@ class PropagandaUser extends Authenticatable implements JWTSubject
         'users_propaganda_id', 'estados_lateral', 'estados_topo', 'cidades_lateral', 'cidades_topo'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        //
-    ];
-
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -37,6 +28,7 @@ class PropagandaUser extends Authenticatable implements JWTSubject
         return [];
     }
 
+    // relationships
     public function usersPropaganda()
     {
         return $this->belongsTo('App\UsersPropaganda');

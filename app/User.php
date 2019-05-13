@@ -39,6 +39,13 @@
             return [];
         }
 
+        // hashing password
+        public function setPasswordAttribute($value)
+        {
+            $this->attributes['password'] = Hash::make($value);
+        }
+
+        // relationships
         public function pessoaFisica()
         {
             return $this->hasOne('App\PessoaFisica');
@@ -52,11 +59,6 @@
         public function cotacaoLida()
         {
             return $this->hasMany('App\CotacaoLida');
-        }
-
-        public function setPasswordAttribute($value)
-        {
-            $this->attributes['password'] = Hash::make($value);
         }
 
         public function propaganda()

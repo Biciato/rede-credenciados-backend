@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class ContatoEmailController extends Controller
 {
     /**
-     * Ship the given order.
+     * Ship the given contact.
      *
      * @param  Request  $request
      * @param  int  $orderId

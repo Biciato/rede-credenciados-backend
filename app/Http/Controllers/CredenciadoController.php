@@ -17,37 +17,40 @@ class CredenciadoController extends Controller
     public function index()
     {
         $credenciados = [];
+        // get pessoa fisica credenciados especific infos
         $credenciados_pf = DB::table('users')
             ->join('pessoa_fisicas', 'users.id', '=', 'pessoa_fisicas.user_id')
             ->join('endereco_pessoa_fisicas', 'pessoa_fisicas.id', 'endereco_pessoa_fisicas.pessoa_fisica_id')
             ->select(
                 'users.id',
-                'users.tipo_pessoa', 
-                'users.email', 
-                'pessoa_fisicas.nome', 
-                'pessoa_fisicas.tel',   
-                'pessoa_fisicas.tel2',   
+                'users.tipo_pessoa',
+                'users.email',
+                'pessoa_fisicas.nome',
+                'pessoa_fisicas.tel',
+                'pessoa_fisicas.tel2',
                 'pessoa_fisicas.cel',
-                'endereco_pessoa_fisicas.cidade'   
+                'endereco_pessoa_fisicas.cidade'
             )
             ->get();
 
+        // get pessoa juridica credenciados especific infos
         $credenciados_pj = DB::table('users')
             ->join('pessoa_juridicas', 'users.id', '=', 'pessoa_juridicas.user_id')
             ->join('endereco_pessoa_juridicas', 'pessoa_juridicas.id', 'endereco_pessoa_juridicas.pessoa_juridica_id')
             ->select(
                 'users.id',
-                'users.tipo_pessoa', 
-                'users.email', 
-                'pessoa_juridicas.nome_fantasia', 
-                'pessoa_juridicas.razao_social', 
-                'pessoa_juridicas.tel',   
-                'pessoa_juridicas.tel2',   
+                'users.tipo_pessoa',
+                'users.email',
+                'pessoa_juridicas.nome_fantasia',
+                'pessoa_juridicas.razao_social',
+                'pessoa_juridicas.tel',
+                'pessoa_juridicas.tel2',
                 'pessoa_juridicas.cel',
-                'endereco_pessoa_juridicas.cidade'      
+                'endereco_pessoa_juridicas.cidade'
             )
-            ->get();    
+            ->get();
 
+        // merging collections retrieved by queries above
         foreach ($credenciados_pf as $item) {
             array_push($credenciados, $item);
         }
@@ -56,6 +59,6 @@ class CredenciadoController extends Controller
             array_push($credenciados, $item);
         }
 
-        return response()->json($credenciados, 201);    
+        return response()->json($credenciados, 201);
     }
 }

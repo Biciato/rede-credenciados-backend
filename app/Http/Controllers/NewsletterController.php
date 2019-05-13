@@ -13,6 +13,7 @@ class NewsletterController extends Controller
 {
     public function create(Request $request)
     {
+        // update or create using email and name
         $newsletter = Newsletter::updateOrCreate(
             ['email' => $request->get('email')],
             ['nome' => $request->get('nome')]
@@ -21,11 +22,11 @@ class NewsletterController extends Controller
         return response()->json($newsletter, 201);
     }
 
-    public function index() 
+    public function index()
     {
         $newsletters = Newsletter::all();
 
-        return response()->json($newsletters, 201); 
+        return response()->json($newsletters, 201);
     }
 
     public function delete($id)

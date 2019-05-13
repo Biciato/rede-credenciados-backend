@@ -11,13 +11,6 @@ use App\Http\Controllers\Controller;
 
 class ForgetPasswordController extends Controller
 {
-    /**
-     * Ship the given order.
-     *
-     * @param  Request  $request
-     * @param  int  $orderId
-     * @return Response
-     */
     public function email(Request $request)
     {
         $email = $request->get('email');
@@ -31,6 +24,7 @@ class ForgetPasswordController extends Controller
     {
         $user = User::find($id);
 
+        // checking if password matches
         if ($user->email === $request->get('email')) {
             $user->update(['password'=> $request->get('password')]);
 
@@ -38,7 +32,5 @@ class ForgetPasswordController extends Controller
         } else {
             return response()->json('E-mail não confere', 201);
         }
-
-
     }
 }

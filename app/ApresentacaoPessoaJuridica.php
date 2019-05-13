@@ -16,7 +16,7 @@
          * @var array
          */
         protected $fillable = [
-            'pj_id', 'apresentacao'
+            'pessoa_juridica_id', 'apresentacao'
         ];
 
         /**
@@ -37,6 +37,7 @@
             return [];
         }
 
+        // relationships
         public function pessoaJuridica()
         {
             return $this->belongsTo('App\PessoaJuridica');

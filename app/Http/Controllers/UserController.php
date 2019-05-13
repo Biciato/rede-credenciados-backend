@@ -18,6 +18,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->get('email'))->first();
 
+        // JWT implementation
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 400);
@@ -50,27 +51,6 @@ class UserController extends Controller
         ]);
 
         $token = JWTAuth::fromUser($user);
-
-        if ($user) {
-            $mensagem = <<<HDC
-                    Seja Bem Vindo ao sistema Rede Credenciados
-
-                    Nossa equipe agradece a confiança em nosso sistema. E estamos sempre à disposição para qualquer dúvidas, sugestões e reclamações.
-
-                    Para entrar em contato, basta usar nosso e-mail contato@redecredenciados.com.br.
-
-                    Agradecemos pela atenção.
-
-                    Equipe Rede Credenciados.
-HDC;
-
-            Mensagem::create([
-                'especialidades' => 'todas',
-                'titulo' => 'Bem Vindo',
-                'mensagem' => $mensagem,
-                'mensagem_lida' => 0
-            ]);
-        }
 
         return response()->json($user, 201);
     }
@@ -108,6 +88,7 @@ HDC;
         return response()->json($user, 201);
     }
 
+    // deletes user's and it's relationship records
     public function delete($id)
     {
         $user = User::find($id);
@@ -142,6 +123,7 @@ HDC;
         }
     }
 
+    // checks if email given already exists on database
     public function checkUserEmail($email) {
         $user = User::where('email', $email)->first();
 

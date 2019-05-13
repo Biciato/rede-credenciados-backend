@@ -15,18 +15,7 @@ class UsersPropagandaController extends Controller
 
     public function register(Request $request)
     {
-        $userPropaganda = UsersPropaganda::create([
-            'nome' => $request->get('nome'),
-            'email' => $request->get('email'),
-            'tel' => $request->get('tel'),
-            'cep' => $request->get('cep'),
-            'rua' => $request->get('rua'),
-            'numero' => $request->get('numero'),
-            'complemento' => $request->get('complemento'),
-            'bairro' => $request->get('bairro'),
-            'cidade' => $request->get('cidade'),
-            'estado' => $request->get('estado'),
-        ]);
+        $userPropaganda = UsersPropaganda::create($request->all());
 
         return response()->json($userPropaganda, 201);
     }
@@ -45,6 +34,7 @@ class UsersPropagandaController extends Controller
         return response()->json($usersPropagandas, 201);
     }
 
+    // checks if given email already exists on database
     public function checkUserEmail($email) {
         $user = User::where('email', $email)->first();
 

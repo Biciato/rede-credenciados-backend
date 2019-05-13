@@ -30,6 +30,7 @@ return array(
     'App\\Http\\Controllers\\AtividadePessoaFisicaController' => $baseDir . '/app/Http/Controllers/AtividadePessoaFisicaController.php',
     'App\\Http\\Controllers\\AtividadePessoaJuridicaController' => $baseDir . '/app/Http/Controllers/AtividadePessoaJuridicaController.php',
     'App\\Http\\Controllers\\AtividadeUnidadeController' => $baseDir . '/app/Http/Controllers/AtividadeUnidadeController.php',
+    'App\\Http\\Controllers\\AtividadesRelatorioController' => $baseDir . '/app/Http/Controllers/AtividadesRelatorioController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',

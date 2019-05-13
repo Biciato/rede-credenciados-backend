@@ -555,6 +555,7 @@ class ComposerStaticInit5340811d1c7be05743677eccb9776ee6
         'App\\Http\\Controllers\\AtividadePessoaFisicaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AtividadePessoaFisicaController.php',
         'App\\Http\\Controllers\\AtividadePessoaJuridicaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AtividadePessoaJuridicaController.php',
         'App\\Http\\Controllers\\AtividadeUnidadeController' => __DIR__ . '/../..' . '/app/Http/Controllers/AtividadeUnidadeController.php',
+        'App\\Http\\Controllers\\AtividadesRelatorioController' => __DIR__ . '/../..' . '/app/Http/Controllers/AtividadesRelatorioController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',

@@ -16,16 +16,8 @@
          * @var array
          */
         protected $fillable = [
-            'pessoa_juridica_id', 'cnpj', 'razao_social', 'nome_fantasia', 'nome_contato', 'email', 'email2', 'tel', 'tel2', 'cel', 'cel2'
-        ];
-
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            //
+            'pessoa_juridica_id', 'cnpj', 'razao_social', 'nome_fantasia', 'nome_contato',
+                'email', 'email2', 'tel', 'tel2', 'cel', 'cel2'
         ];
 
         public function getJWTIdentifier()
@@ -37,6 +29,7 @@
             return [];
         }
 
+        // relationships
         public function pessoaJuridica()
         {
             return $this->belongsTo('App\PessoaJuridica');
@@ -60,10 +53,5 @@
         public function propaganda()
         {
             return $this->hasOne('App\PropagandaUnidade');
-        }
-
-        public function unidadeImg()
-        {
-            return $this->hasOne('App\UnidadeImg');
         }
     }

@@ -15,12 +15,7 @@ class PropagandaUserController extends Controller
     {
         $userPropaganda = UsersPropaganda::find($request->get('id'));
 
-        $propagandaUser = $userPropaganda->propaganda()->create([
-            'estados_lateral' => ($request->get('estados_lateral')),
-            'estados_topo' => ($request->get('estados_topo')),
-            'cidades_lateral' => ($request->get('cidades_lateral')),
-            'cidades_topo' => ($request->get('cidades_topo')),
-        ]);
+        $propagandaUser = $userPropaganda->propaganda()->create($request->all());
 
         return response()->json($propagandaUser, 201);
     }
@@ -42,6 +37,7 @@ class PropagandaUserController extends Controller
 
     public function index($cidade, $estado)
     {
+        // gets Propaganda index by cities and states
         $cidadeDecoded = urldecode($cidade);
         $estadoDecoded = urldecode($estado);
         $propagandas_topo = PropagandaUser::where([

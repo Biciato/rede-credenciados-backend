@@ -19,14 +19,6 @@ class PropagandaUnidade extends Authenticatable implements JWTSubject
         'unidade_id', 'estados_lateral', 'estados_topo', 'cidades_lateral', 'cidades_topo'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        //
-    ];
 
     public function getJWTIdentifier()
     {
@@ -37,15 +29,9 @@ class PropagandaUnidade extends Authenticatable implements JWTSubject
         return [];
     }
 
+    // relationships
     public function unidade()
     {
         return $this->belongsTo('App\Unidade');
     }
-
-    protected $casts = [
-            'estados_lateral' => 'array',
-            'estados_topo' => 'array',
-            'cidades_lateral' => 'array',
-            'cidades_topo' => 'array',
-        ];
 }

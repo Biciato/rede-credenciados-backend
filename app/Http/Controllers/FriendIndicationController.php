@@ -19,6 +19,7 @@ class FriendIndicationController extends Controller
 
     public function update($id)
     {
+        // updating updated_at column
         $friendIndication = FriendIndication::find($id)->touch();
 
         return response()->json($friendIndication, 201);
@@ -29,13 +30,7 @@ class FriendIndicationController extends Controller
 
         return response()->json($friendIndications, 201);
     }
-    /**
-     * Ship the given order.
-     *
-     * @param  Request  $request
-     * @param  int  $orderId
-     * @return Response
-     */
+
     public function email(Request $request)
     {
         $nome = $request->get('nome');
@@ -52,6 +47,7 @@ class FriendIndicationController extends Controller
 
     public function sms(Request $request)
     {
+        // sending SMS text
         $basic  = new \Nexmo\Client\Credentials\Basic('d4f32747', 'QsQSBHQk9UKlJQNF');
         $client = new \Nexmo\Client($basic);
 

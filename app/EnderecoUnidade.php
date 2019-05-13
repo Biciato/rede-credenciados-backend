@@ -19,14 +19,6 @@
             'unidade_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado'
         ];
 
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            //
-        ];
 
         public function getJWTIdentifier()
         {
@@ -37,6 +29,7 @@
             return [];
         }
 
+        // relationships
         public function unidade()
         {
             return $this->belongsTo('App\Unidade');

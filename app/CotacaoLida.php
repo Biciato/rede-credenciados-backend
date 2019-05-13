@@ -37,12 +37,13 @@ class CotacaoLida extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function cotacao() 
+    // relationships
+    public function cotacao()
     {
         return $this->belongsTo('App\Cotacao');
     }
 
-    public function user() 
+    public function user()
     {
         return $this->belongsTo('App\User');
     }

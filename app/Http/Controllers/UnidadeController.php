@@ -29,6 +29,7 @@ class UnidadeController extends Controller
         return response()->json($unidade, 201);
     }
 
+    // checks CNPJ specific number existence
     public function checkCnpj(Request $request)
     {
         $unidade = Unidade::where('cnpj', $request->get('cnpj'))->first();

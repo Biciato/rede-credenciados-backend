@@ -19,15 +19,6 @@
             'user_id', 'cnpj', 'razao_social', 'nome_fantasia', 'nome_contato', 'email', 'email2', 'tel', 'tel2', 'cel', 'cel2'
         ];
 
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            //
-        ];
-
         public function getJWTIdentifier()
         {
             return $this->getKey();
@@ -37,6 +28,7 @@
             return [];
         }
 
+        // relationships
         public function user()
         {
             return $this->belongsTo('App\User');
@@ -65,10 +57,5 @@
         public function propaganda()
         {
             return $this->hasOne('App\PropagandaPessoaJuridica');
-        }
-
-        public function pessoaJuridicaImg() 
-        {
-            return $this->hasOne('App\PessoaJuridicaImg');
         }
     }

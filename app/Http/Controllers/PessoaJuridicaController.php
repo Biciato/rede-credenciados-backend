@@ -16,7 +16,7 @@ class PessoaJuridicaController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nome_contato' => 'required|string|max:255', 
+            'nome_contato' => 'required|string|max:255',
         ]);
 
         if($validator->fails()){
@@ -25,18 +25,7 @@ class PessoaJuridicaController extends Controller
 
         $user = User::find($request->get('user_id'));
 
-        $pessoa_juridica = $user->pessoaJuridica()->create([
-            'cnpj' => $request->get('cnpj'),
-            'razao_social' => $request->get('razao_social'),
-            'nome_fantasia' => $request->get('nome_fantasia'),
-            'nome_contato' => $request->get('nome_contato'),
-            'email' => $request->get('email'),
-            'email2' => $request->get('email2'),
-            'tel' => $request->get('tel'),
-            'tel2' => $request->get('tel2'),
-            'cel' => $request->get('cel'),
-            'cel2' => $request->get('cel2'),
-        ]);
+        $pessoa_juridica = $user->pessoaJuridica()->create($request->all());
 
         return response()->json($pessoa_juridica, 201);
     }
@@ -48,12 +37,6 @@ class PessoaJuridicaController extends Controller
         return response()->json($pessoa_juridica, 201);
     }
 
-    public function showResumo($id) {
-        $resumo = PessoaJuridica::find($id);
-
-        return response()->json($resumo, 201);
-    }
-
     public function update($id, Request $request)
     {
         $pessoa_juridica = PessoaJuridica::find($id);
@@ -63,6 +46,7 @@ class PessoaJuridicaController extends Controller
         return response()->json($pessoa_juridica, 201);
     }
 
+    // check CNPJ specific number existence
     public function checkCnpj(Request $request)
     {
         $pj = PessoaJuridica::where('cnpj', $request->get('cnpj'))->first();

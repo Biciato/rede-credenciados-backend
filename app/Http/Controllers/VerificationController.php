@@ -12,13 +12,6 @@ use Mailgun\Mailgun;
 
 class VerificationController extends Controller
 {
-    /**
-     * Ship the given order.
-     *
-     * @param  Request  $request
-     * @param  int  $orderId
-     * @return Response
-     */
     public function verify(Request $request)
     {
         $id = $request->get('id');

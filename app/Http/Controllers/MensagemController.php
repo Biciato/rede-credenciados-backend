@@ -30,6 +30,7 @@ class MensagemController extends Controller
     {
         $mensagem_ids = $request->get('mensagem_ids');
 
+        // update collections read status retrieved by query above
         foreach ($mensagem_ids as $mensagem_id) {
             Mensagem::find($mensagem_id)->update(['mensagem_lida' => 1]);
         }
@@ -41,6 +42,7 @@ class MensagemController extends Controller
     {
         $mensagem_ids = $request->get('mensagem_ids');
 
+        // update collections read status retrieved by query above
         foreach ($mensagem_ids as $mensagem_id) {
             Mensagem::find($mensagem_id)->update(['mensagem_lida' => 0]);
         }
@@ -53,7 +55,7 @@ class MensagemController extends Controller
         $mensagem = Mensagem::create([
             'titulo' => $request->get('title'),
             'mensagem' => $request->get('message'),
-            'mensagem_lida' => false,
+            'mensagem_lida' => 'none',
             'especialidades' => $request->get('activities'),
             'cidades' => $request->get('cities'),
             'estados' => $request->get('states')

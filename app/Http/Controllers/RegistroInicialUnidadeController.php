@@ -17,20 +17,10 @@ class RegistroInicialUnidadeController extends Controller
 {
     public function register(Request $request)
     {
+        // registers unity's addresses, activities and resume
         $pessoa_juridica = PessoaJuridica::find($request->get('id'));
 
-        $unidade = $pessoa_juridica->unidades()->create([
-            'cnpj' => $request->get('cnpj'),
-            'razao_social' => $request->get('razao_social'),
-            'nome_fantasia' => $request->get('nome_fantasia'),
-            'nome_contato' => $request->get('nome_contato'),
-            'email' => $request->get('email'),
-            'email2' => $request->get('email2'),
-            'tel' => $request->get('tel'),
-            'tel2' => $request->get('tel2'),
-            'cel' => $request->get('cel'),
-            'cel2' => $request->get('cel2')
-        ]);
+        $unidade = $pessoa_juridica->unidades()->create($request->all());
 
         $unidade->endereco()->create([
             'cep' => $request->get('cep'),

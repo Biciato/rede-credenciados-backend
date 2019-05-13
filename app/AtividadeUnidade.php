@@ -37,6 +37,7 @@
             return [];
         }
 
+        // relationships
         public function unidade()
         {
             return $this->belongsTo('App\Unidade');

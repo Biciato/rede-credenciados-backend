@@ -35,6 +35,7 @@ class CotacaoController extends Controller
     }
 
     public function index(Request $request) {
+        // retrieving only citys and states given on request
         $cotacoes = Cotacao::where([
             ['cidades', 'like', '%'.$request->get('cidade').'%'],
             ['estados', 'like', '%'.$request->get('estado').'%' ]

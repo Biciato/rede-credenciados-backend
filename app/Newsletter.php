@@ -19,15 +19,6 @@ class Newsletter extends Authenticatable implements JWTSubject
         'nome', 'email'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        //
-    ];
-
     public function getJWTIdentifier()
     {
         return $this->getKey();

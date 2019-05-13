@@ -37,7 +37,8 @@ class Cotacao extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function cotacaoLida() 
+    // relationships
+    public function cotacaoLida()
     {
         return $this->hasMany('App\CotacaoLida');
     }

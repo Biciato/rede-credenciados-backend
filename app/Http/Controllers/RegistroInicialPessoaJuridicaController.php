@@ -14,6 +14,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 class RegistroInicialPessoaJuridicaController extends Controller
 {
+    // registers pessoa juridicas's addresses, activities and resume
     public function register(Request $request)
     {
         $pessoa_juridica = PessoaJuridica::find($request->get('id'));

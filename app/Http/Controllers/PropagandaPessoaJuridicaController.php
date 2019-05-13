@@ -15,24 +15,9 @@ class PropagandaPessoaJuridicaController extends Controller
 
     public function create(Request $request)
     {
-        /*
-        $validator = Validator::make($request->all(), [
-            'cep' => 'required|string|max:255',
-        ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-        */
-
         $user = User::find($request->get('id'));
 
-        $propaganda_pessoa_juridica = $user->propaganda()->create([
-            'estados_lateral' => ($request->get('estados_lateral')),
-            'estados_topo' => ($request->get('estados_topo')),
-            'cidades_lateral' => ($request->get('cidades_lateral')),
-            'cidades_topo' => ($request->get('cidades_topo')),
-        ]);
+        $propaganda_pessoa_juridica = $user->propaganda()->create($request->all());
 
         return response()->json($propaganda_pessoa_juridica, 201);
     }
@@ -54,6 +39,7 @@ class PropagandaPessoaJuridicaController extends Controller
 
     public function index($cidade, $estado)
     {
+        // gets Propaganda index by cities and states
         $cidadeDecoded = urldecode($cidade);
         $estadoDecoded = urldecode($estado);
         $propagandas_topo = PropagandaPessoaJuridica::where([

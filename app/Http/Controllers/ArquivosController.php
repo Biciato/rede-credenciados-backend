@@ -16,6 +16,8 @@ class ArquivosController extends Controller
 {
     public function store(Request $request, $id, $filename)
     {
+        // check if it's already have an file, deleting it in case of existence, storing it in case
+        // of fails
         if (substr($filename, -4) == '.pdf') {
             $files = Storage::disk('public')->files('arquivos/'.$id.'/pdf');
             if ($files) {
@@ -46,8 +48,11 @@ class ArquivosController extends Controller
         return response()->json($path, 201);
     }
 
+
     public function storeBanner(Request $request, $id, $local, $filename)
     {
+        // check if it's already have an file, deleting it in case of existence, storing it in case
+        // of fails
         if ($local === 'topo') {
             $files = Storage::disk('public')->files('banners/' . $id . '/topo');
             if ($files) {
@@ -70,6 +75,8 @@ class ArquivosController extends Controller
 
     public function storeBannerSimpleUser(Request $request, $id, $local, $filename)
     {
+        // check if it's already have an file, deleting it in case of existence, storing it in case
+        // of fails
         if ($local === 'topo') {
             $files = Storage::disk('public')->files('banners-simple-users/' . $id . '/topo');
             if ($files) {

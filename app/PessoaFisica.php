@@ -19,15 +19,6 @@
             'user_id', 'nome', 'rg', 'cpf', 'nascimento', 'sexo', 'email', 'email2', 'tel', 'tel2', 'cel', 'cel2'
         ];
 
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            //
-        ];
-
         public function getJWTIdentifier()
         {
             return $this->getKey();
@@ -37,6 +28,7 @@
             return [];
         }
 
+        // relationships
         public function user()
         {
             return $this->belongsTo('App\User');
@@ -55,10 +47,5 @@
         public function endereco()
         {
             return $this->hasOne('App\EnderecoPessoaFisica');
-        }
-
-        public function pessoaFisicaImg() 
-        {
-            return $this->hasOne('App\PessoaFisicaImg');
         }
     }

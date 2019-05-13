@@ -22,6 +22,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class PesquisaClientesController extends Controller
 {
 
+    // querying pessoa fisicas, juridicas and unities data (everything)
     public function pesquisa(Request $request)
     {
         $pessoa_fisicas = DB::table('pessoa_fisicas')
@@ -52,7 +53,7 @@ class PesquisaClientesController extends Controller
                     ->where('atividades', 'like', '%'.$request->get('atividade').'%');
             })
             ->select('pessoa_juridicas.*', 'endereco_pessoa_juridicas.*', 'atividade_pessoa_juridicas.*')
-            ->get(); 
+            ->get();
 
         $unidades = DB::table('unidades')
             ->join('endereco_unidades', function ($join) use ($request) {
@@ -70,8 +71,8 @@ class PesquisaClientesController extends Controller
                 $join->on('unidades.pessoa_juridica_id', '=', 'pessoa_juridicas.id');
             })
             ->select('unidades.*', 'endereco_unidades.*', 'atividade_unidades.*', 'pessoa_juridicas.user_id')
-            ->get();           
+            ->get();
 
-        return response()->json([$pessoa_fisicas, $pessoa_juridicas, $unidades], 201);            
+        return response()->json([$pessoa_fisicas, $pessoa_juridicas, $unidades], 201);
     }
 }

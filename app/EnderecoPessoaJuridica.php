@@ -16,16 +16,7 @@
          * @var array
          */
         protected $fillable = [
-            'pj_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado'
-        ];
-
-        /**
-         * The attributes that should be hidden for arrays.
-         *
-         * @var array
-         */
-        protected $hidden = [
-            //
+            'pessoa_juridica_id', 'cep', 'rua', 'numero', 'complemento', 'bairro', 'cidade', 'estado'
         ];
 
         public function getJWTIdentifier()
@@ -37,6 +28,7 @@
             return [];
         }
 
+        // relationships
         public function pessoaJuridica()
         {
             return $this->belongsTo('App\PessoaJuridica');
