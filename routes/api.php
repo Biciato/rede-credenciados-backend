@@ -175,10 +175,10 @@ Route::middleware(['jwt.verify', 'cors'])->group(function() {
 
     // Messages Routes
     Route::post('mensagem', 'MensagemController@create');
-    Route::get('mensagens/{id}', 'MensagemController@mensagensUser');
+    Route::get('mensagens/{id}/{tipoPessoa}', 'MensagemController@mensagensUser');
     Route::put('mensagens/{id}', 'MensagemController@update');
-    Route::put('mensagens', 'MensagemController@updateCol');
-    Route::put('mensagens-unread', 'MensagemController@updateUnreadCol');
+    Route::put('mensagens/{id}', 'MensagemController@updateCol');
+    Route::put('mensagens-unread/{id}', 'MensagemController@updateUnreadCol');
 
     // Cotations Route
     Route::post('cotacao-user', 'CotacaoController@index');

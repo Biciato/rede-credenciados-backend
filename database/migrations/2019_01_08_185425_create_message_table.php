@@ -13,14 +13,14 @@ class CreateMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('mensagens', function (Blueprint $table) {
+        Schema::create('mensagems', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
             $table->text('mensagem');
             $table->text('especialidades');
             $table->text('cidades');
             $table->text('estados');
-            $table->boolean('mensagem_lida');
+            $table->text('mensagem_lida')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mensagens');
+        Schema::dropIfExists('mensagems');
     }
 }
