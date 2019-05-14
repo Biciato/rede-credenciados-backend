@@ -48,7 +48,7 @@ class FriendIndicationController extends Controller
     public function sms(Request $request)
     {
         // sending SMS text
-        $basic  = new \Nexmo\Client\Credentials\Basic('d4f32747', 'QsQSBHQk9UKlJQNF');
+        $basic  = new \Nexmo\Client\Credentials\Basic(env('NEXMO_USER'), env('NEXMO_KEY'));
         $client = new \Nexmo\Client($basic);
 
         $message = $client->message()->send([
